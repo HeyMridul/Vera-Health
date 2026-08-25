@@ -1,0 +1,96 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@theme {
+  --font-display: 'Fraunces', serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --color-paper: #FBFAF6;
+  --color-paper-dim: #F3F1EA;
+  --color-ink: #12241F;
+  --color-ink-soft: #2A3B36;
+  --color-slate: #5B6B66;
+  --color-slate-light: #8C9C97;
+  --color-line: #E1E1D6;
+
+  --color-teal-50: #EEF7F2;
+  --color-teal-100: #DCEEE6;
+  --color-teal-300: #7FBCA3;
+  --color-teal-500: #2B8E68;
+  --color-teal-600: #1F7A5C;
+  --color-teal-700: #175E46;
+  --color-teal-900: #0E3B2C;
+
+  --color-coral-100: #FBE4DE;
+  --color-coral-500: #E5573F;
+  --color-coral-600: #C8442D;
+
+  --color-amber-100: #FBEED9;
+  --color-amber-600: #B7791F;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono-data {
+  font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--color-teal-100);
+  color: var(--color-teal-900);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+
+/* Signature motif: an animated ECG/vitals pulse line, used as a recurring
+   brand mark (logo, dividers, loading states) */
+.pulse-line {
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@keyframes pulse-draw {
+  0% { stroke-dashoffset: 240; }
+  60% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -240; }
+}
+
+.pulse-line-animate {
+  stroke-dasharray: 240;
+  animation: pulse-draw 2.2s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse-line-animate {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--color-line);
+  border-radius: 1rem;
+}
